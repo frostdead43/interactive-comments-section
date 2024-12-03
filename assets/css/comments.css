@@ -1,0 +1,215 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Rubik", sans-serif;
+  background:#F5F6FA;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+.container {
+  padding: 32px 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  padding: 16px;
+  background: #FFF;
+  border-radius: 8px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  h5 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.96px;
+  color: #334253;
+  }
+  span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #67727E;
+  }
+}
+p {
+  font-weight: 400;
+  line-height: 24px;
+  color: #67727E;
+  margin-block: 16px;
+}
+.comment-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-group {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #F5F6FA;
+  button {
+    background-color: inherit;
+    border: none;
+    color: #C5C6EF;
+  }
+  #pointBtn {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.96px;
+    color: #5357B6;
+  }
+}
+.reply-btn {
+  background: url("../img/left-icon.svg") no-repeat center left 0;
+  padding-left: 20px;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #5357B6;
+}
+.comment-section {
+  padding: 16px;
+  background: #FFF;
+  border-radius: 8px;
+  margin: 16px;
+  
+}
+form {
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+}
+.send-btn {
+  background: #5357B6;
+  border: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 12px 30px;
+  border-radius: 8px;
+}
+textarea {
+  width: 311px;
+  height: 96px;
+  border: 1px solid #E9EBF0;
+  padding: 12px;
+  border-radius: 8px;
+}
+.delete-btn {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #ED6368;
+  background: inherit;
+  border: none;
+
+}
+dialog {
+  margin-inline: auto;
+  margin-top: 25%;
+  padding-inline: 27px;
+  border: none;
+  border-radius: 8px;
+}
+
+dialog h6 {
+color: rgba(51, 66, 83, 1);
+font-size: 20px;
+font-weight: 400;
+line-height: 23.7px;
+}
+
+dialog p {
+color: rgba(103, 114, 126, 1);
+font-weight: 400;
+line-height: 24px;
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0, .5);
+}
+
+#noBtn {
+  background-color: rgba(103, 114, 126, 1);
+  color: white;
+  border: none;
+  width: 138px;
+  padding-block: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
+#yesBtn {
+  background-color: rgba(237, 99, 104, 1);
+  color: white;
+  border: none;
+  width: 138px;
+  padding-block: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+h3 {
+  color: #FFF;
+  background: #5357B6;
+  border-radius: 2px;
+  padding-inline: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.41px;
+}
+
+
+@media (width > 450px) {
+  textarea {
+    width: 100%;
+  }
+  
+}

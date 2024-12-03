@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comments App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/comments.css">
+  <script src="assets/js/comments.js" defer></script>
+</head>
+<body>
+  <div class="container">
+  </div>
+  <div class="comment-section">
+    <form>
+      <textarea name="" id="commentUser" placeholder="Add a comment..."></textarea>
+      <div>
+        <img src="assets/img/juliusomo-avatar.svg" alt="">
+        <button class="send-btn">SEND</button>
+      </div>
+    </form>
+  </div>
+  <dialog id="myDialog">
+    <h6>Delete Comment</h6>
+    <p>Are you sure you want to delete this comment? This will remove the comment and can’t be undone.</p>
+    <div class="buttons">
+      <button id="noBtn">NO, CANCEL</button>
+      <button id="yesBtn">YES, DELETE</button>
+    </div>
+  </dialog>
+
+</body>
+</html>
