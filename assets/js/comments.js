@@ -121,7 +121,31 @@ function renderComments() {
     `
 
   ).join("")
+
+  const replyBtns = document.querySelectorAll(".reply-btn");
+  replyBtns.forEach((replyBtn) => {
+    replyBtn.addEventListener("click", handleReplyBtn)
+  });
 }
+
+function handleReplyBtn(event) {
+  const commentCard = event.target.closest(".card");
+  console.log(commentCard);
+  const replyArea = commentCard.querySelector(".reply-area");
+  console.log(replyArea);
+
+  if (replyArea.style.display === "none") {
+    replyArea.style.display = "block";
+  } else {
+    replyArea.style.display = "none";
+  }
+
+  const sendReplyBtn = replyArea.querySelector(".send-reply-btn");
+  sendReplyBtn.addEventListener("click", function(e) {
+    handleSendReply (e, commentCard)
+  })
+}
+
 
 function addComment(e) {
   e.preventDefault();
