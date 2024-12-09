@@ -78,7 +78,7 @@ function renderComments() {
   container.innerHTML = ""
   container.innerHTML += comments.map((comment) => 
     `
-    <div class="card">
+    <div class="card" data-id="${comment.id}">
       <div class="comment-header">
         <img src="${comment.user.image.png}" alt="" >
         <h5>${comment.user.username}</h5>
@@ -95,7 +95,29 @@ function renderComments() {
         </div>
         <button class="reply-btn">Reply</button>
       </div>
+      <form class="reply-area">
+        <textarea class="reply-textarea" placeholder="Add a reply..."></textarea>
+        <button class="send-reply-btn">SEND</button>
+      </form>
     </div>
+     <div class="replies">
+        ${comment.replies
+          .map(
+            (reply) => `
+          <div class="card reply-card" data-id="${reply.id}">
+            <div class="comment-header">
+              <img src="${reply.user.image.png}" alt="">
+              <h5>${reply.user.username}</h5>
+              <span>${reply.createdAt}</span>
+            </div>
+            <div class="comment-content">
+              <p><span>@${reply.replyingTo}</span> ${reply.content}</p>
+            </div>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
     `
 
   ).join("")

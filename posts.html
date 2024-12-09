@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="content"></div>
+  <script>
+    const content = document.querySelector('.content');
+
+    function generateCommentsHtml(comments) {
+      let commentsHtml = '';
+      for (const item of comments) {
+        commentsHtml += `<p>${item.user.fullName} says: ${item.body}</p>`;
+      }
+      return commentsHtml;
+    }
+
+    async function loadDetail(postId) {
+      content.innerHTML = 'Loading please wait!';
+      const post = await fetch('https://dummyjson.com/post/' + postId).then(x => x.json());
+      const commentsData = await fetch(`https://dummyjson.com/post/${postId}/comments`).then(x => x.json());
+      content.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+        <hr>
+        ${generateCommentsHtml(commentsData.comments)}
+        <hr>
+        <a href="#" class="goHomeBtn">back</a>
+      `;
+    }
+
+    async function loadPosts() {
+      content.innerHTML = 'Loading please wait!';
+      const data = await fetch('https://dummyjson.com/post?select=title,tags').then(x => x.json());
+
+      content.innerHTML = '';
+      for (const post of data.posts) {
+        content.innerHTML += `
+          <h3><a href="#" class="postTitleLink" data-postid="${post.id}">${post.title}</a></h3>
+          <hr>
+        `;
+      }
+    }
+
+    // loadPosts();
+
+    // event delegation
+    content.addEventListener('click', function(e) {
+      e.preventDefault();
+      const that = e.target;
+      if(that.className === 'postTitleLink') {
+        loadDetail(that.dataset.postid);
+      }
+
+      if(that.className === 'goHomeBtn') {
+        loadPosts();
+      }
+    });
+
+    function sum(number1, number2) {
+      return number1 + number2;
+    }
+
+    const topla = (number1, number2) => number1 + number2;
+
+    console.log(sum(20, 10));
+    console.log(topla(20, 10));
+    console.clear();
+    // chaining zincirleme
+    // func tipi farketmez. önemli olan bir şey dönmesi
+    // ve döndüğü tipi bilerek, o tipe uygun 
+    //method/property çağırmak
+    const birlestir = (ad, soyad) => `${ad} ${soyad}`;
+    const buyut = metin => metin.toLocaleUpperCase('tr');
+
+    const tamAd = birlestir('Orhan', 'Ekici');
+    console.log(
+      birlestir(' Orhan', 'Ekici ')
+        .toLocaleUpperCase('tr')
+        .trim()
+        .toLocaleLowerCase('tr')
+      );
+
+    console.clear();
+
+    function capitalize(sentence) {
+      const words = sentence.trim().split(' ');
+
+      for (let i = 0; i < words.length; i++) {
+        const currentWord = words[i];
+        words[i] = currentWord.at(0).toLocaleUpperCase('tr') + currentWord.slice(1).toLocaleLowerCase('tr');
+      }
+
+      return words.join(' ');
+    }
+
+    // split reverse join
+    'akirah'.split('').reverse().join('')
+
+    // kaç kelime gönderirsem göndereyim
+    // ilk harflerini büyük yapsın, kalanı küçük olsun
+    // geri dönsün
+
+    // console.log(capitalize('orhan ekici')); // Orhan Ekici
+    // console.log(capitalize('orhan')); // Orhan
+    // console.log(capitalize('ORHAN')); // Orhan
+    // console.log(capitalize('oRhAn ekİCİ')); // Orhan Ekici
+
+    // const betterCapitalize = s => s.split(' ').map(x => x.at(0).toLocaleUpperCase('tr') + x.slice(1).toLocaleLowerCase('tr')).join(' ');
+
+    // console.log(betterCapitalize('orhan EKİCİ'));
+
+    // async / await
+    // ekrana .map kullanarak basalım
+
+    const fruits = ["kavun", "şeftali", "karpuz", "mandalina"];
+    let fruitsHtml = fruits.map(function(fruit) {
+      return `<p>${fruit} <button class="fruitBtn">➕</button></p>`;
+    }).join('');
+
+    // fruitsHtml = fruitsHtml.join('');
+    content.innerHTML = fruitsHtml;
+
+    // content.innerHTML = fruits.map(x => `<p>${x}</p>`).join('');
+  
+    // const btns = document.querySelectorAll('.fruitBtn');
+    document.querySelectorAll('.fruitBtn').forEach(btn => btn.addEventListener('click', handleClick));
+    // for (const btn of btns) {
+    //   btn.addEventListener('click', handleClick);
+    // }
+
+    function handleClick() {
+      alert('hop');
+    }
+
+    const students = [
+      {
+        name: 'Orhan'
+      },
+      {
+        name: 'Kıvanç'
+      },
+      {
+        name: 'Nihat'
+      }
+    ];
+
+    console.table(students.filter(x => x.name.includes('ç')));
+
+    const filteredFruits = fruits.filter(function(fruit) {
+      if(fruit.startsWith('ka')) {
+        return true;
+      }
+
+      return false;
+    });
+
+    console.log(filteredFruits);
+  </script>
+</body>
+</html>

@@ -206,6 +206,13 @@ h3 {
   line-height: 15.41px;
 }
 
+.reply-area {
+  display: none;
+}
+
+.replies {
+  display: none;
+}
 
 @media (width > 450px) {
   textarea {
